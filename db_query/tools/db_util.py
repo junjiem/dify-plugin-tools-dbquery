@@ -82,12 +82,19 @@ class DbUtil:
             records = df.to_dict(orient="records")
         for record in records:
             for key in record:
-                if type(record[key]) is Timestamp:
-                    record[key] = record[key].strftime('%Y-%m-%d %H:%M:%S')
-                if type(record[key]) is datetime.date:
-                    record[key] = record[key].strftime('%Y-%m-%d')
-                if type(record[key]) is UUID:
-                    record[key] = str(record[key])
+                value = record[key]
+                # First, check if it is None or an empty string
+                if value is None or value == '':
+                    continue
+                if isinstance(value, Timestamp):
+                    record[key] = value.strftime('%Y-%m-%d %H:%M:%S')
+                if isinstance(value, datetime.date):
+                    record[key] = value.strftime('%Y-%m-%d')
+                if isinstance(value, UUID):
+                    record[key] = str(value)
+                elif isinstance(value, float):
+                    if value.is_integer():
+                        record[key] = int(value)
         return records
 
     def test_sql(self):
