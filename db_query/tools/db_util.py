@@ -88,9 +88,9 @@ class DbUtil:
                     continue
                 if isinstance(value, Timestamp):
                     record[key] = value.strftime('%Y-%m-%d %H:%M:%S')
-                if isinstance(value, datetime.date):
+                elif isinstance(value, datetime.date):
                     record[key] = value.strftime('%Y-%m-%d')
-                if isinstance(value, UUID):
+                elif isinstance(value, UUID):
                     record[key] = str(value)
                 elif isinstance(value, float):
                     if value.is_integer():
