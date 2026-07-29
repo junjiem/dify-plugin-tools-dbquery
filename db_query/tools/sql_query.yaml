@@ -37,13 +37,17 @@ parameters:
         label:
           en_US: Microsoft SQL Server
           zh_Hans: Microsoft SQL Server
+      - value: dm
+        label:
+          en_US: Dameng (DM)
+          zh_Hans: 达梦数据库
     default: mysql
     label:
       en_US: Database type
       zh_Hans: 数据库类型
     human_description:
-      en_US: Used for selecting the database type, mysql, oracle, oracle11g, postgresql or mssql.
-      zh_Hans: 用于选择数据库类型，mysql、oracle、oracle11g、postgresql或mssql。
+      en_US: Used for selecting the database type, mysql, oracle, oracle11g, postgresql, mssql or dm.
+      zh_Hans: 用于选择数据库类型，mysql、oracle、oracle11g、postgresql、mssql或dm（达梦）。
     form: llm
   - name: db_host
     type: string

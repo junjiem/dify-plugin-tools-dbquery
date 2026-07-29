@@ -7,3 +7,5 @@ PyMySQL==1.1.1
 oracledb==2.2.1
 psycopg2-binary==2.9.10
 pymssql==2.3.4
+dmPython==2.5.32
+dmSQLAlchemy==2.0.17

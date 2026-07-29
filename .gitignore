@@ -16,3 +16,7 @@ target/
 .gradle/
 tmp/
 build/
+
+# Python caches
+__pycache__/
+*.py[cod]

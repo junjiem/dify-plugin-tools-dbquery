@@ -16,9 +16,9 @@ Database Query Tools
 
 数据库查询工具
 
-Currently supported database types: mysql, oracle, [oracle11g](#2-how-to-connect-to-oracle-11g--如何连接oracle-11g), postgresql, or mssql.
+Currently supported database types: mysql, oracle, [oracle11g](#2-how-to-connect-to-oracle-11g--如何连接oracle-11g), postgresql, mssql, or Dameng (DM).
 
-目前支持的数据库类型：mysql、oracle、[oracle11g](#2-how-to-connect-to-oracle-11g--如何连接oracle-11g)、postgresql、mssql。
+目前支持的数据库类型：mysql、oracle、[oracle11g](#2-how-to-connect-to-oracle-11g--如何连接oracle-11g)、postgresql、mssql、达梦（DM）。
 
 ![db_query](_assets/db_query.png)
 
@@ -122,4 +122,16 @@ Scripting tool for downloading Dify plugin package from Dify Marketplace and Git
 从Dify市场和Github下载Dify插件包并重新打【真】离线包（包含依赖，不需要再联网）的脚本工具。
 
 Github Repo: https://github.com/junjiem/dify-plugin-repackaging
+
+
+#### 4. How to connect to Dameng (DM)  如何连接达梦数据库
+
+Select `Dameng (DM)` as the database type. The default Dameng port is `5236`.
+The optional database name is passed to the Dameng driver as the schema name.
+Additional dmPython connection parameters can be entered in Database properties,
+for example: `login_timeout=10`.
+
+数据库类型选择“达梦数据库”，达梦默认端口为 `5236`。
+可选的“库名”会作为 schema 名传递给达梦驱动。
+其他 dmPython 连接参数可填写在“数据库属性”中，例如：`login_timeout=10`。
 
