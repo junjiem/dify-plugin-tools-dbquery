@@ -16,9 +16,9 @@ Database Query Tools (Pre-authorization)
 
 数据库查询工具（预授权）
 
-Currently supported database types: mysql, oracle, [oracle11g](#2-how-to-connect-to-oracle-11g--如何连接oracle-11g), postgresql, mssql, or Dameng (DM).
+Currently supported database types: mysql, oracle, [oracle11g](#2-how-to-connect-to-oracle-11g--如何连接oracle-11g), postgresql, mssql, Dameng (DM), or Apache Doris.
 
-目前支持的数据库类型：mysql、oracle、[oracle11g](#2-how-to-connect-to-oracle-11g--如何连接oracle-11g)、postgresql、mssql、达梦（DM）。
+目前支持的数据库类型：mysql、oracle、[oracle11g](#2-how-to-connect-to-oracle-11g--如何连接oracle-11g)、postgresql、mssql、达梦（DM）、Apache Doris。
 
 ![db_query_pre_auth](_assets/db_query_pre_auth.png)
 
@@ -132,4 +132,16 @@ for example: `login_timeout=10`.
 数据库类型选择“达梦数据库”，达梦默认端口为 `5236`。
 可选的“库名”会作为 schema 名传递给达梦驱动。
 其他 dmPython 连接参数可填写在“数据库属性”中，例如：`login_timeout=10`。
+
+
+#### 5. How to connect to Apache Doris 4.0.6  如何连接 Apache Doris 4.0.6
+
+Select `Apache Doris` as the database type and connect to the FE MySQL protocol
+port. The default port is `9030`. Database name is optional; it can also use the
+`catalog.database` format for an external catalog. Additional PyMySQL connection
+parameters can be entered in Database properties.
+
+数据库类型选择 `Apache Doris`，连接 FE 的 MySQL 协议端口，默认端口为
+`9030`。“库名”可以留空；连接外部 Catalog 时也可填写
+`catalog.database`。其他 PyMySQL 连接参数可填写在“数据库属性”中。
 

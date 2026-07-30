@@ -37,7 +37,7 @@ class DbUtil:
 
     def get_driver_name(self):
         driver_name = self.db_type
-        if self.db_type == 'mysql':
+        if self.db_type in {'mysql', 'doris'}:
             driver_name = 'mysql+pymysql'
         elif self.db_type in {'oracle', 'oracle11g'}:
             driver_name = 'oracle+oracledb'
