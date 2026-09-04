@@ -49,13 +49,17 @@ credentials_for_provider:
         label:
           en_US: Apache Doris
           zh_Hans: Apache Doris
+      - value: kingbase
+        label:
+          en_US: KingbaseES
+          zh_Hans: 人大金仓 KingbaseES
     default: mysql
     label:
       en_US: Database type
       zh_Hans: 数据库类型
     help:
-      en_US: Used for selecting the database type, mysql, oracle, oracle11g, postgresql, mssql, dm or doris.
-      zh_Hans: 用于选择数据库类型，mysql、oracle、oracle11g、postgresql、mssql、dm（达梦）或doris。
+      en_US: Used for selecting the database type, mysql, oracle, oracle11g, postgresql, mssql, dm, doris or kingbase.
+      zh_Hans: 用于选择数据库类型，mysql、oracle、oracle11g、postgresql、mssql、dm（达梦）、doris或kingbase（人大金仓）。
   db_host:
     type: text-input
     required: true

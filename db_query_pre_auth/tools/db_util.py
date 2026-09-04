@@ -1,5 +1,6 @@
 import datetime
 import logging
+import re
 from typing import Optional
 from urllib import parse
 from uuid import UUID
@@ -8,6 +9,29 @@ import oracledb
 import pandas as pd
 from pandas import Timestamp
 from sqlalchemy import create_engine
+from sqlalchemy.dialects import registry
+from sqlalchemy.dialects.postgresql.psycopg2 import PGDialect_psycopg2
+from sqlalchemy.engine import Connection
+
+
+class KingbaseDialect(PGDialect_psycopg2):
+    """Psycopg2 dialect with support for the KingbaseES version format."""
+
+    name = 'kingbase'
+
+    def _get_server_version_info(self, connection: Connection) -> tuple[int, ...]:
+        version = connection.exec_driver_sql("select pg_catalog.version()").scalar()
+        match = (
+            re.match(r"KingbaseES V(\d{3})R(\d{3})C(\d{3})", version)
+            if isinstance(version, str)
+            else None
+        )
+        if match:
+            return tuple(int(part) for part in match.groups())
+        return super()._get_server_version_info(connection)
+
+
+registry.register("kingbase.psycopg2", __name__, "KingbaseDialect")
 
 
 class DbUtil:
@@ -43,6 +67,8 @@ class DbUtil:
             driver_name = 'oracle+oracledb'
         elif self.db_type == 'postgresql':
             driver_name = 'postgresql+psycopg2'
+        elif self.db_type == 'kingbase':
+            driver_name = 'kingbase+psycopg2'
         elif self.db_type == 'mssql':
             driver_name = 'mssql+pymssql'
         elif self.db_type == 'dm':

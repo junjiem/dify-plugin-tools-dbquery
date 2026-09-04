@@ -16,9 +16,9 @@ Database Query Tools (Pre-authorization)
 
 数据库查询工具（预授权）
 
-Currently supported database types: mysql, oracle, [oracle11g](#2-how-to-connect-to-oracle-11g--如何连接oracle-11g), postgresql, mssql, Dameng (DM), or Apache Doris.
+Currently supported database types: mysql, oracle, [oracle11g](#2-how-to-connect-to-oracle-11g--如何连接oracle-11g), postgresql, mssql, Dameng (DM), Apache Doris, or KingbaseES.
 
-目前支持的数据库类型：mysql、oracle、[oracle11g](#2-how-to-connect-to-oracle-11g--如何连接oracle-11g)、postgresql、mssql、达梦（DM）、Apache Doris。
+目前支持的数据库类型：mysql、oracle、[oracle11g](#2-how-to-connect-to-oracle-11g--如何连接oracle-11g)、postgresql、mssql、达梦（DM）、Apache Doris、人大金仓 KingbaseES。
 
 ![db_query_pre_auth](_assets/db_query_pre_auth.png)
 
@@ -144,4 +144,17 @@ parameters can be entered in Database properties.
 数据库类型选择 `Apache Doris`，连接 FE 的 MySQL 协议端口，默认端口为
 `9030`。“库名”可以留空；连接外部 Catalog 时也可填写
 `catalog.database`。其他 PyMySQL 连接参数可填写在“数据库属性”中。
+
+
+#### 6. How to connect to KingbaseES  如何连接人大金仓 KingbaseES
+
+Select `KingbaseES` as the database type. The default port is `54321`, and the
+database name must identify the target KingbaseES database. This plugin uses the
+existing Psycopg2 driver through KingbaseES PostgreSQL protocol compatibility,
+so it adds no platform-specific dependency. Additional Psycopg2 connection
+parameters can be entered in Database properties.
+
+数据库类型选择 `人大金仓 KingbaseES`，默认端口为 `54321`，“库名”需填写
+目标 KingbaseES 数据库名。插件通过 KingbaseES 的 PostgreSQL 协议兼容性复用现有
+Psycopg2 驱动，不增加平台相关依赖。其他 Psycopg2 连接参数可填写在“数据库属性”中。
 

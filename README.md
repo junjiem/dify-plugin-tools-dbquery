@@ -6,9 +6,9 @@
 
 ### Demonstration
 
-Currently supported database types: mysql, oracle, [oracle11g](./db_query/README.md#2-how-to-connect-to-oracle-11g--如何连接oracle-11g), postgresql, mssql, Dameng (DM), or Apache Doris.
+Currently supported database types: mysql, oracle, [oracle11g](./db_query/README.md#2-how-to-connect-to-oracle-11g--如何连接oracle-11g), postgresql, mssql, Dameng (DM), Apache Doris, or KingbaseES.
 
-目前支持的数据库类型：mysql、oracle、[oracle11g](./db_query/README.md#2-how-to-connect-to-oracle-11g--如何连接oracle-11g)、postgresql、mssql、达梦（DM）、Apache Doris。
+目前支持的数据库类型：mysql、oracle、[oracle11g](./db_query/README.md#2-how-to-connect-to-oracle-11g--如何连接oracle-11g)、postgresql、mssql、达梦（DM）、Apache Doris、人大金仓 KingbaseES。
 
 ![db_query](db_query/_assets/db_query.png)
 
