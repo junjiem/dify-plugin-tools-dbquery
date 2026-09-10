@@ -99,22 +99,15 @@ class DbUtil:
         self.engine.dispose()
 
     def run_query(self, query_sql: str) -> list[dict]:
-        '''
-        Run SQL Query
-        '''
-        query_sql = query_sql.replace('%', '%%')
+        if self.engine.dialect.paramstyle in {"format", "pyformat"}:
+            query_sql = query_sql.replace("%", "%%")
         df = pd.read_sql_query(sql=query_sql, con=self.engine, parse_dates="%Y-%m-%d %H:%M:%S")
-        df = df.fillna('')
-        records = []
-        if len(df) > 0:
-            records = df.to_dict(orient="records")
+        records = df.to_dict(orient="records")
         for record in records:
-            for key in record:
-                value = record[key]
-                # First, check if it is None or an empty string
-                if value is None or value == '':
-                    continue
-                if isinstance(value, Timestamp):
+            for key, value in record.items():
+                if pd.api.types.is_scalar(value) and pd.isna(value):
+                    record[key] = ''
+                elif isinstance(value, Timestamp):
                     record[key] = value.strftime('%Y-%m-%d %H:%M:%S')
                 elif isinstance(value, datetime.date):
                     record[key] = value.strftime('%Y-%m-%d')
